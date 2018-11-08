@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id          :integer          not null, primary key
+#  description :text
+#  image       :string
+#  name        :string
+#  price_cents :integer
+#  quantity    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#
+# Indexes
+#
+#  index_products_on_category_id  (category_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (category_id => categories.id)
+#
+
 class Product < ActiveRecord::Base
 
   monetize :price_cents, numericality: true
