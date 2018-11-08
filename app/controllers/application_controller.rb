@@ -3,6 +3,24 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def current_user
+    # @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if session[:user_id]
+      if @current_user
+        @current_user
+      else
+        @current_user = User.find(session[:user_id])
+      end
+    else
+      @current_user = nil
+    end
+  end
+  helper_method :current_user
+
+  def authorize
+    redirect_to(login_path, notice: 'you are not permitted to access this page') unless current_user
+  end
+
   private
 
   def cart
