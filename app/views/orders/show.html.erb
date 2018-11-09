@@ -5,7 +5,12 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order, <%= current_user.email %> .</h4>
+    <p>Your total is <%= humanized_money_with_symbol @total %></p>
+    <p>The following item(s) will be en route shortly:</p>
+    <ul>
+      <%= render :partial => 'line_item', :collection => @order.line_items %>
+    </ul>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>

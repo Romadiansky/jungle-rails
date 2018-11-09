@@ -27,6 +27,15 @@ main section.categories-show {
         display: block;
       }
 
+
+      .container .jumbotron, .container-fluid .jumbotron {
+        border-radius: 6px;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: #563ab5;
+        background-color: #efeff3;
+      }
+
       footer {
         position: absolute;
         bottom: 0;
@@ -85,5 +94,6 @@ main section.products-show {
     }
   }
 }
+
 
 

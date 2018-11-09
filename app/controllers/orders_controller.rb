@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @total = @order.line_items.inject(0) do |product, line_item|
+      line_item.product.price_cents
+    end
   end
 
   def create

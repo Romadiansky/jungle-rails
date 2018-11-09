@@ -7,15 +7,15 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Welcome to the site'
+      redirect_to root_path, notice: 'Welcome to the Jungle'
     else
-      redirect_to login_path, notice: 'Login #fail'
+      redirect_to login_path, notice: 'Login #fail. Try Again'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: 'Farewell'
+    redirect_to login_path, notice: 'Farewell, friend.'
   end
 
 end
