@@ -1,5 +1,6 @@
 <li>
-  <b><%= line_item.product.name %></b>
+  <b><%= pluralize(line_item.quantity, line_item.product.name) %></b>
+  (<%= humanized_money_with_symbol line_item.total_price_cents %>)
   <p><%= line_item.product.description %></p>
-  <img src="<%= line_item.product.image %>">
+  <img src="<%= line_item.product.image.thumb %>">
 </li>

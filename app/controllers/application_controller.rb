@@ -38,6 +38,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
+  def cart_quantity
+    cart.map do |line_item|
+      line_item[1]
+    end.sum
+  end
+  helper_method :cart_quantity
+
+  def empty_cart!
+    update_cart({})
+  end
 
   def update_cart(new_cart)
     cookies[:cart] = {

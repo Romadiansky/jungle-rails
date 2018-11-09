@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @total = @order.line_items.inject(0) do |product, line_item|
-      line_item.product.price_cents
+      line_item.total_price_cents
     end
   end
 
@@ -23,11 +23,6 @@ class OrdersController < ApplicationController
   end
 
   private
-
-  def empty_cart!
-    # empty hash means no products in cart :)
-    update_cart({})
-  end
 
   def perform_stripe_charge
     Stripe::Charge.create(

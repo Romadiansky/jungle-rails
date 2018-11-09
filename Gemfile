@@ -36,6 +36,7 @@ gem 'rmagick'
 gem 'stripe'
 gem 'faker'
 gem 'annotate'
+gem 'discard'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

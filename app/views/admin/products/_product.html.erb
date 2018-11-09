@@ -17,6 +17,10 @@
     <%= product.quantity %>
   </td>
   <td>
+    <% if product.discarded? %>
+    <b>Deleted!</b>
+    <% else %>
     <%= link_to fa_icon('trash'), [:admin, product], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
   </td>
 </tr>

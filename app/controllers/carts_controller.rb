@@ -17,6 +17,11 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
+  def empty
+    empty_cart!
+    redirect_to root_path, notice: 'Your cart has been emptied'
+  end
+
   private
 
   def modify_cart_delta(product_id, delta)

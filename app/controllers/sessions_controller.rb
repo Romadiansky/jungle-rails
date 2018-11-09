@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    empty_cart!
     session[:user_id] = nil
     redirect_to login_path, notice: 'Farewell, friend.'
   end

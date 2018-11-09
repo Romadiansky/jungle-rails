@@ -16,7 +16,7 @@
       </thead>
       <tbody>
         <% enhanced_cart.each do |item| %>
-          <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
+        <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
         <% end %>
       </tbody>
       <tfoot>
@@ -32,21 +32,36 @@
     </table>
   </div>
 
+  <% if current_user %>
+
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
-    </div>
+      <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-amount="<%= cart_subtotal_cents %>"
+      data-name="Jungle"
+      data-description="Khurram Virani's Jungle Order"
+      data-locale="auto"
+      data-email="kvirani@gmail.com"
+      data-currency="cad">
+    </script>
+    <% end %>
   </div>
+</div>
+<% else %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to 'Login to checkout', login_path %>
+  </div>
+</div>
+<% end %>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to 'Empty Cart', empty_cart_path, :method => :post, :class => 'btn btn-info btn-raised' %>
+  </div>
+</div>
 
 </section>
