@@ -2,9 +2,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @total = @order.line_items.inject(0) do |product, line_item|
-      line_item.total_price_cents
-    end
+    @total = @order.line_items.map do |line_item|
+      line_item.item_price_cents * line_item.quantity
+    end.sum
   end
 
   def create
@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+      JungleMailer.order_summary(order, current_user).deliver_now
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }

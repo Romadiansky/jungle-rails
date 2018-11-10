@@ -1,0 +1,12 @@
+<h1>Hey there, <%= @user.first_name %>!</h1>
+<p>Did we remember to tell you you've got <b>great</b> taste? You do. Here is your latest order summary:</p>
+
+<ul>
+  <% @order.line_items.each do |line_item| %>
+    <li>
+      <%= pluralize(line_item.quantity, line_item.product.name) %>  -
+      <%= humanized_money_with_symbol (line_item.total_price_cents/100.0) %>
+    </li>
+  <% end %>
+</ul>
+<h2>Total: <%= humanized_money_with_symbol (@order.total_cents/100.0) %></h2>

@@ -11,8 +11,8 @@
 #
 
 class Order < ActiveRecord::Base
-
-  belongs_to :user
+#belongs_to association should have a db record to back it up. it does not exist. this sucks. fixit.
+  belongs_to :user # <= poop
   has_many :line_items
 
   monetize :total_cents, numericality: true
