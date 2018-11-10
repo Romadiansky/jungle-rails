@@ -34,6 +34,14 @@
       </div>
     </div>
 
+    <% @product.reviews.latest_first.each do |review| %>
+    <div class="row">
+      <div class="col-12">
+        <%= review.user.first_name %> gives this <%= review.rating %> stars and says:
+        <p><%= review.description %></p>
+      </div>
+    </div>
+    <% end %>
 
   </article>
 

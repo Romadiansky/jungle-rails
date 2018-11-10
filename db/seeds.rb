@@ -28,6 +28,15 @@ puts "Finding or Creating Categories ..."
 cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
+cat4 = Category.find_or_create_by! name: 'Wearables'
+
+## USERS
+
+user1 = User.create!({
+  first_name: "Hello",
+  last_name: "Buyer",
+  password: "qwe"
+})
 
 ## PRODUCTS
 
@@ -132,5 +141,20 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+cat_hat = cat4.products.create!({
+  name:  'Cat Hat',
+  description: "Your grandmother's fur closet meets vegan fantasy. Stylish. Warm. Guaranteed to impress. Included: avocado oil laced with mild sedatives to keep the feline shiny and docile.",
+  image: open_asset('cat-hat.jpg'),
+  quantity: 55,
+  price: 45.22
+})
+
+## REVIEWS
+
+user1.reviews.create!({
+  product_id: cat_hat.id,
+  rating: 5,
+  description: "warm and fuzzy, get lots of compliments; the first one I got died after a week and really started to smell bad, but they happily replaced it with a fatter, shiner cutie. Would buy again!"
+})
 
 puts "DONE!"
