@@ -2,6 +2,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Archivo+Narrow|Roboto');
+
+
 
 // App
 @import "products";
@@ -10,6 +13,7 @@
 body {
   padding-top: 70px;
   color: #89511e;
+  font-family: 'Roboto'
 }
 
 .well {
@@ -26,4 +30,15 @@ body {
 // Bootstrap adjustments
 form.button_to {
   display: inline;
+}
+
+.page-header > h1 {
+  font-family: 'Archivo Narrow';
+}
+
+.navbar-brand {
+  height: 100px;
+  position: relative;
+  top: -12px;
+  margin-bottom: -20px;
 }
