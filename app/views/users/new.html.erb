@@ -3,14 +3,21 @@
 <%= form_for :user, url: '/users', :class => "form-group" do |f| %>
 
   <div class="row">
-    First Name: <%= f.text_field :first_name %>
+    First Name: <br><%= f.text_field :first_name %>
   </div>
   <div class="row">
-    Last Name: <%= f.text_field :last_name %>
+    Last Name: <br><%= f.text_field :last_name %>
   </div>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <div class="row">
+    Email: <br><%= f.text_field :email %>
+  </div>
+  <div class="row">
+    Password: <br><%= f.password_field :password %>
+  </div>
+  <div class="row">
+    Password Confirmation: <br><%= f.password_field :password_confirmation %>
+  </div>
+  <br>
   <div class="row">
     <%= f.submit "Submit", :class => 'btn btn-raised btn-primary' %>
   </div>
