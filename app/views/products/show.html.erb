@@ -66,10 +66,10 @@
 
         <br>
 
-        <div class="row">
+        <div class="row grid">
           <% @product.reviews.latest_first.each do |review| %>
-            <div class="col-sm-4">
-              <div class="panel">
+            <div class="col-12 grid-item">
+              <div class="panel panel-info">
                 <div class="panel-heading"><%= time_ago_in_words(review.created_at) %> ago</div>
                 <div class="panel-body">
                   <h5 class="panel-title"><%= review.user.first_name %> says:</h5>
@@ -94,3 +94,9 @@
   </article>
 
 </section>
+<script>
+// let elem = document.querySelector('.grid');
+// let msnry = new Masonry( elem, {
+//   itemSelector: '.grid-item'
+// });
+</script>
