@@ -23,7 +23,8 @@
 
 class User < ActiveRecord::Base
 
-  validates :password, confirmation: true
+  validates :password, presence: true
+  validates :password_confirmation == :password, presence: true
   validates :email, uniqueness:  { case_sensitive: false }
   validates :email, :first_name, :last_name, presence: true
   validates :password, length: { in: 3..20 }
