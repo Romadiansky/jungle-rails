@@ -23,17 +23,16 @@
 
 class User < ActiveRecord::Base
 
-  validates :password, presence: true
-  validates :password_confirmation == :password, presence: true
+  validates :password, confirmation: true
   validates :email, uniqueness:  { case_sensitive: false }
-  validates :email, :first_name, :last_name, presence: true
+  validates :email, :first_name, :last_name, :password_confirmation, presence: true
   validates :password, length: { in: 3..20 }
 
   has_secure_password
   has_many :reviews
 
   def self.authenticate_with_credentials(email, password)
-     user = User.find_by_email(email)
+     user = User.find_by_email(email.delete(" \t\r\n").downcase)
      user && user.authenticate(password)
   end
 
